@@ -18,7 +18,7 @@ spec:
         image: ghcr.io/mc-fdc-dev/screenshot-api:latest
         ports:
         - containerPort: 3000
-        command: ["sleep", "identify"]
+        command: ["sleep", "infinity"]
         env:
         - name: BROWSER_URL
           value: "http://chromium-svc:9222"
