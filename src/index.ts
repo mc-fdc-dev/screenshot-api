@@ -23,7 +23,7 @@ const app = express();
     let page = await browser.newPage();
     await page.setViewport({
       height: 960,
-      weight: 1260,
+      width: 1260,
     });
     await page.goto(req.query.url as string);
     let content = await page.screenshot() as Buffer;
