@@ -25,7 +25,9 @@ const app = express();
       height: 960,
       width: 1260,
     });
-    await page.goto(req.query.url as string);
+    await page.goto(req.query.url as string, {
+       waitUntil: "networkidle2",
+    });
     let content = await page.screenshot() as Buffer;
     await page.close();
     // return image data
