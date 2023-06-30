@@ -1,13 +1,13 @@
 import express from "express";
 import puppeteer from "puppeteer-core";
-import { promises as dns } from "dns";
+import { promises as dns, ADDRCONFIG } from "dns";
 
 const app = express();
 
 (async () => {
   const { address } = await dns.lookup(process.env.BROWSER_URL as string, {
     family: 4,
-    hints: dns.ADDRCONFIG,
+    hints: ADDRCONFIG,
   });
   if (!address) {
     return;
