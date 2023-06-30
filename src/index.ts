@@ -16,7 +16,12 @@ const app = express();
     await page.goto(req.query.url as string);
     let content = await page.screenshot() as Buffer;
     await page.close();
-    await res.send(content.buffer);
+    // return image data
+    res.writeHead(200, {
+      "Content-Type": "image/png",
+      "Content-Length": content.length
+    });
+    res.end(content);
   });
 })();
 
