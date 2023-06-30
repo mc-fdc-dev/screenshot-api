@@ -25,7 +25,7 @@ spec:
         - "--remote-debugging-port=9222"
         - "--no-sandbox"
         - "--allowed-origins=*"
-        - "--proxy-server=https=proxy1.d1.rspsrv.jp:26024
+        - "--proxy-server=https=proxy1.d1.rspsrv.jp:26024"
 ---
 apiVersion: v1
 kind: Service
