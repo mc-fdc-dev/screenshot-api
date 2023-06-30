@@ -9,6 +9,9 @@ const app = express();
     family: 4,
     hints: dns.ADDRCONFIG,
   });
+  if (!address) {
+    return;
+  }
   const browser = await puppeteer.connect({ browserURL: address });
 
   app.get("/", async (req, res) => {
