@@ -5,14 +5,14 @@ import { promises as dns, ADDRCONFIG } from "dns";
 const app = express();
 
 (async () => {
-  const { address } = await dns.lookup(process.env.BROWSER_URL as string, {
+  const { address } = await dns.lookup(process.env.BROWSER_ADDRESS as string, {
     family: 4,
     hints: ADDRCONFIG,
   });
   if (!address) {
     return;
   }
-  const browser = await puppeteer.connect({ browserURL: address });
+  const browser = await puppeteer.connect({ browserURL: `http://${address}:${process.env.BROWSER_PORT}` });
 
   app.get("/", async (req, res) => {
     if (!req.query.url) {
