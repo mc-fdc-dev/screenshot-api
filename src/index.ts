@@ -7,6 +7,11 @@ const app = express();
   const browser = await puppeteer.connect({ browserURL: process.env.BROWSER_URL });
 
   app.get("/", async (req, res) => {
+    if (!req.query.url) {
+      return await res.send({
+        "message": "imvalid"
+      });
+    }
     let page = await browser.newPage();
     await page.goto(req.query.url as string);
     await res.send("Ok");
