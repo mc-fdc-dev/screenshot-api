@@ -14,6 +14,7 @@ const app = express();
     }
     let page = await browser.newPage();
     await page.goto(req.query.url as string);
+    await page.close();
     await res.send("Ok");
   });
 })();
