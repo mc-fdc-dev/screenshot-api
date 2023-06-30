@@ -25,6 +25,7 @@ const app = express();
       height: 960,
       width: 1260,
     });
+    await page.setDefaultNavigationTimeout(0);
     await page.goto(req.query.url as string, {
        waitUntil: "networkidle2",
     });
