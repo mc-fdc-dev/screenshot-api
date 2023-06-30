@@ -23,15 +23,3 @@ spec:
           value: "chromium-svc"
         - name: BROWSER_PORT
           value: "9222"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ss-api-svc
-spec:
-  selector:
-    app: ss-api
-  ports:
-  - protocol: TCP
-    port: 3000
-    targetPort: 3000
