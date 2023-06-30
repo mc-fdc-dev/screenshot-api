@@ -11,11 +11,14 @@ const app = express();
       return await res.send({
         "message": "imvalid"
       });
-    }
+    };
     let page = await browser.newPage();
     await page.goto(req.query.url as string);
+    let content = await page.screenshot({
+      encoding: "binary"
+    }) as Buffer;
     await page.close();
-    await res.send("Ok");
+    await res.send(content.buffer);
   });
 })();
 
