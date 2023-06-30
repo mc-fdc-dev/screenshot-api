@@ -26,3 +26,4 @@ spec:
         - "--no-sandbox"
         - "--allowed-origins=*"
         - "--proxy-server=http://proxy1.d1.rspsrv.jp:26020"
+        - "--hide-scrollbars"
