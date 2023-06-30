@@ -8,7 +8,7 @@ const app = express();
 
   app.get("/", async (req, res) => {
     let page = await browser.newPage();
-    await page.goto(req.query.url);
+    await page.goto(req.query.url as string);
     await res.send("Ok");
   });
 })();
