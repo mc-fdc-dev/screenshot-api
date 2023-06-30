@@ -5,7 +5,7 @@ import { promises as dns } from "dns";
 const app = express();
 
 (async () => {
-  const { address } = await dns.lookup(process.env.BROWSER_URL, {
+  const { address } = await dns.lookup(process.env.BROWSER_URL as string, {
     family: 4,
     hints: dns.ADDRCONFIG,
   });
