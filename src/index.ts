@@ -14,7 +14,7 @@ const app = express();
     };
     let page = await browser.newPage();
     await page.goto(req.query.url as string);
-    let content = await page.screenshot({
+    let content = await page.screenshot_1({
       encoding: "binary"
     }) as Buffer;
     await page.close();
