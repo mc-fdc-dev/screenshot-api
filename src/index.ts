@@ -17,7 +17,7 @@ const app = express();
   app.get("/", async (req, res) => {
     if (!req.query.url) {
       return await res.send({
-        "message": "imvalid"
+        "message": "invalid"
       });
     };
     let page = await browser.newPage();
