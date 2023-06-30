@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chromium-deployment
+  labels:
+    app: chromium
+spec:
+  selector:
+    matchLabels:
+      app: chromium
+  template:
+    metadata:
+      labels:
+        app: chromium
+    spec:
+      containers:
+      - name: chromium
+        image: ghcr.io/tuna2134/chromium-docker:latest
+        ports:
+        - containerPort: 9222
+        args:
+        - "--headless"
+        - "--disable-gpu"
+        - "--remote-debugging-address=0.0.0.0"
+        - "--remote-debugging-port=9222"
+        - "--no-sandbox"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chromium-svc
+spec:
+  selector:
+    app: chromium
+  ports:
+  - protocol: TCP
+    port: 9222
+    targetPort: 9222

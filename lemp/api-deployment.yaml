@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ss-api-deployment
+  labels:
+    app: api
+spec:
+  selector:
+    matchLabels:
+      app: ss-api
+  template:
+    metadata:
+      labels:
+        app: ss-api
+    spec:
+      containers:
+      - name: ss-api
+        image: ghcr.io/mc-fdc-dev/screenshot-api:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: BROWSER_URL
+          value: "http://chromium-svc:9222"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ss-api-svc
+spec:
+  selector:
+    app: ss-api
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
