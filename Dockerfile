@@ -16,6 +16,6 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
 COPY --from=build /build/node_modules ./node_modules
-COPY --from=build ./dist .
+COPY --from=build /build/dist .
 
 CMD ["node", "index.js"]
