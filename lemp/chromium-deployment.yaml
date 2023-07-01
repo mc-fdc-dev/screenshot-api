@@ -17,7 +17,7 @@ spec:
       - ip: "127.0.0.1"
         hostnames:
         - "localhost"
-        - "chromium-service"
+        - "chromium-svc"
       containers:
       - name: chromium
         image: ghcr.io/tuna2134/chromium-docker:latest
