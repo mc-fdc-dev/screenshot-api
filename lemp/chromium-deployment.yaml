@@ -29,3 +29,8 @@ spec:
         - "--hide-scrollbars"
         - "--disable-dev-shm-usage"
         - "--no-first-run"
+        hostAliases:
+        - ip: "127.0.0.1"
+        hostnames:
+        - "localhost"
+        - "chromium-service"
