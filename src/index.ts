@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
     await page.setViewport({
       height: Number(req.query.height ?? "960"),
       width: Number(req.query.width ?? "1260"),
-      deviceScaleFactor: Number(req.query.deviceScaleFactor ?? "1"),
+      deviceScaleFactor: 2,
     });
     await page.setDefaultNavigationTimeout(0);
     await page.goto(req.query.url as string, {
