@@ -9,6 +9,7 @@ spec:
     matchLabels:
       app: chromium
   template:
+    replicas: 2
     metadata:
       labels:
         app: chromium
