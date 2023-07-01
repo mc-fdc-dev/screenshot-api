@@ -29,6 +29,7 @@ app.get("/", async (req, res) => {
   });
   let content = await page.screenshot() as Buffer;
   await page.close();
+  browser.disconnect();
   res.writeHead(200, {
     "Content-Type": "image/png",
     "Content-Length": content.length
