@@ -21,8 +21,8 @@ app.get("/", async (req, res) => {
     }
     const page = await browser.newPage();
     await page.setViewport({
-      height: 960,
-      width: 1260,
+      height: req.query.height ?? 960,
+      width: req.query.width ?? 1260,
     });
     await page.setDefaultNavigationTimeout(0);
     await page.goto(req.query.url as string, {
