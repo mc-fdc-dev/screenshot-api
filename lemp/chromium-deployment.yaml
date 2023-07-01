@@ -13,11 +13,6 @@ spec:
       labels:
         app: chromium
     spec:
-      hostAliases:
-      - ip: "127.0.0.1"
-        hostnames:
-        - "localhost"
-        - "chromium-svc"
       containers:
       - name: chromium
         image: ghcr.io/tuna2134/chromium-docker:latest
