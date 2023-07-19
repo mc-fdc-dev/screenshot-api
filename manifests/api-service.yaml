@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: ss-api-svc
   annotations:
-    dev.okteto.com/auto-ingress: "3-webshot-api.tuna2134.dev"
+    dev.okteto.com/auto-ingress: "webshot-api"
 spec:
   selector:
     app: ss-api
