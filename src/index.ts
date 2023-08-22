@@ -6,6 +6,11 @@ const app = express();
 
 app.get("/", async (req, res) => {
   try {
+    if (!req.query.url) {
+      return res.status(400).send({
+        message: "Invalid request"
+      });
+    }
     const { address } = await dns.lookup(process.env.BROWSER_ADDRESS as string, {
       family: 4,
       hints: ADDRCONFIG,
@@ -14,11 +19,6 @@ app.get("/", async (req, res) => {
       return res.status(500).send("Address not found");
     }
     const browser = await puppeteer.connect({ browserURL: `http://${address}:${process.env.BROWSER_PORT}` });
-    if (!req.query.url) {
-      return res.status(400).send({
-        message: "Invalid request"
-      });
-    }
     const page = await browser.newPage();
     await page.setViewport({
       height: Number(req.query.height ?? "960"),
