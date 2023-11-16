@@ -1,4 +1,4 @@
-FROM node:18-slim AS build
+FROM node:20-slim AS build
 
 WORKDIR /build
 
@@ -10,7 +10,7 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm tsc
 
-FROM node:18-slim AS runtime
+FROM node:20-slim AS runtime
 
 WORKDIR /app
 
