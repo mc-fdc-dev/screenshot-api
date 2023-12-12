@@ -4,6 +4,8 @@ import { promises as dns, ADDRCONFIG } from "dns";
 
 const app = express();
 
+const kubernetesMode = process.env.KUBERNETES === "true";
+
 app.get("/", async (req, res) => {
   try {
     if (!req.query.url) {
@@ -11,14 +13,20 @@ app.get("/", async (req, res) => {
         message: "Invalid request"
       });
     }
-    const { address } = await dns.lookup(process.env.BROWSER_ADDRESS as string, {
-      family: 4,
-      hints: ADDRCONFIG,
-    });
-    if (!address) {
+    let addr = "";
+    if (kubernetesMode) {
+      addr = process.env.CHROMIUM_SVC_SERVICE_HOST as string;
+    } else {
+      const { address } = await dns.lookup(process.env.BROWSER_ADDRESS as string, {
+        family: 4,
+        hints: ADDRCONFIG,
+      });
+      addr = address;
+    };
+    if (!addr) {
       return res.status(500).send("Address not found");
     }
-    const browser = await puppeteer.connect({ browserURL: `http://${address}:${process.env.BROWSER_PORT}` });
+    const browser = await puppeteer.connect({ browserURL: `http://${addr}:${process.env.BROWSER_PORT}` });
     const page = await browser.newPage();
     await page.setViewport({
       height: Number(req.query.height ?? "960"),
