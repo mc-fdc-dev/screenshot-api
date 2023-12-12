@@ -20,7 +20,5 @@ spec:
         ports:
         - containerPort: 3000
         env:
-        - name: BROWSER_ADDRESS
-          value: "chromium-svc"
-        - name: BROWSER_PORT
-          value: "9222"
+        - name: KUBERNETES_MODE
+          value: "true"
