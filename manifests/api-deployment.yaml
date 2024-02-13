@@ -22,3 +22,8 @@ spec:
         env:
         - name: KUBERNETES_MODE
           value: "true"
+        resources:
+          requests:
+            memory: 0.1Gi
+          limits:
+            memory: 0.5Gi
