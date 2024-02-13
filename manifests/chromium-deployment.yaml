@@ -30,3 +30,8 @@ spec:
         - "--hide-scrollbars"
         - "--disable-dev-shm-usage"
         - "--no-first-run"
+        resources:
+          limits:
+            memory: 0.1Gi
+          requests:
+            memory: 0.5Gi
