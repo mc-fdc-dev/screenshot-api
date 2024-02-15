@@ -27,6 +27,8 @@ spec:
         - "--no-sandbox"
         - "--allowed-origins=*"
         - "--proxy-server=http://proxy1.d1.rspsrv.jp:26020"
+        - "--ignore-certificate-errors"
+        - "--ignore-certificate-errors-spki-list"
         - "--hide-scrollbars"
         - "--disable-dev-shm-usage"
         - "--no-first-run"
