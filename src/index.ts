@@ -10,7 +10,7 @@ app.get("/", async (req, res) => {
   try {
     if (!req.query.url) {
       return res.status(400).send({
-        message: "Invalid request"
+        message: "Invalid request",
       });
     }
     let addr = "";
@@ -19,17 +19,22 @@ app.get("/", async (req, res) => {
       addr = process.env.CHROMIUM_SVC_SERVICE_HOST as string;
       port = process.env.CHROMIUM_SVC_SERVICE_PORT as string;
     } else {
-      const { address } = await dns.lookup(process.env.BROWSER_ADDRESS as string, {
-        family: 4,
-        hints: ADDRCONFIG,
-      });
+      const { address } = await dns.lookup(
+        process.env.BROWSER_ADDRESS as string,
+        {
+          family: 4,
+          hints: ADDRCONFIG,
+        },
+      );
       addr = address;
       port = process.env.BROWSER_PORT as string;
-    };
+    }
     if (!addr) {
       return res.status(500).send("Address not found");
     }
-    const browser = await puppeteer.connect({ browserURL: `http://${addr}:${port}` });
+    const browser = await puppeteer.connect({
+      browserURL: `http://${addr}:${port}`,
+    });
     const page = await browser.newPage();
     await page.setViewport({
       height: Number(req.query.height ?? "960"),
@@ -44,14 +49,13 @@ app.get("/", async (req, res) => {
     await page.close();
     res.writeHead(200, {
       "Content-Type": "image/png",
-      "Content-Length": content.length
+      "Content-Length": content.length,
     });
     res.end(content);
   } catch (error) {
     console.error(error);
-    res.status(500).send({"message": "Internal server error"});
+    res.status(500).send({ message: "Internal server error" });
   }
 });
 
 app.listen(3000);
-
