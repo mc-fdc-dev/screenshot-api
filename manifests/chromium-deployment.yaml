@@ -25,7 +25,7 @@ spec:
         - "--remote-debugging-address=0.0.0.0"
         - "--remote-debugging-port=9222"
         - "--no-sandbox"
-        - "--proxy-server=http://46.250.248.92:3128"
+        - "--proxy-server=https://proxy1.d1.rspsrv.jp:26024"
         - "--hide-scrollbars"
         - "--disable-dev-shm-usage"
         - "--no-first-run"
