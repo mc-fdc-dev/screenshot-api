@@ -14,7 +14,7 @@ RUN pnpm tsc
 
 FROM base as installer
 
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --prod
 
 FROM node:20-slim
 
