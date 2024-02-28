@@ -1,21 +1,10 @@
-FROM node:20-slim AS build
-
-WORKDIR /build
-
-RUN npm install -g pnpm
-
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-
-COPY . .
-RUN pnpm tsc
-
-FROM node:20-slim AS runtime
+FROM oven/bun:1 as base 
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
-COPY --from=build /build/node_modules ./node_modules
-COPY --from=build /build/dist .
+COPY package.json ./
+RUN bun install
 
-CMD ["node", "index.js"]
+COPY . .
+
+CMD ["bun", "run", "src/index.ts"]
