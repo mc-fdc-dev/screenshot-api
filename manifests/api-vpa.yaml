@@ -6,6 +6,6 @@ spec:
   targetRef:
     apiVersion: "apps/v1"
     kind: Deployment
-    name: ss-api-deploymet
+    name: ss-api-deployment
   updatePolicy:
     updateMode: "Off"
