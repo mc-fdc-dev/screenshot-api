@@ -8,4 +8,4 @@ spec:
     kind: Deployment
     name: ss-api-deployment
   updatePolicy:
-    updateMode: "Off"
+    updateMode: "Auto"
