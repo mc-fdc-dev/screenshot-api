@@ -4,7 +4,7 @@ metadata:
   name:  ss-api-vpa
 spec:
   targetRef:
-    apiVersion:"apps/v1"
+    apiVersion: "apps/v1"
     kind: Deployment
     name: ss-api-deploymet
   updatePolicy:
