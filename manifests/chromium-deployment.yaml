@@ -20,7 +20,8 @@ spec:
         ports:
         - containerPort: 9222
         args:
-        - "--headless=false"
+        - "--headless=new"
+        - "--lang=en_US"
         - "--disable-gpu"
         - "--remote-debugging-address=0.0.0.0"
         - "--remote-debugging-port=9222"
